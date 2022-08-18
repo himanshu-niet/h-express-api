@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = process.env.DB
+const connectionString = "mongodb+srv://himanshu16:Himanshu%4016@cluster0.vfz23.mongodb.net/test"
 
 mongoose.connect(connectionString);
 const database = mongoose.connection;
