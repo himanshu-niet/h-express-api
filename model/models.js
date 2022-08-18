@@ -92,7 +92,7 @@ const faqs=new mongoose.Schema({
     date:String,
 })
 const tac=new mongoose.Schema({
-    desc:sting
+    desc:String
 })
 
 
