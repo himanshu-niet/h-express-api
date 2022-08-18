@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = "mongodb://localhost:27017/test";
+const connectionString = process.env.DB
 
 mongoose.connect(connectionString);
 const database = mongoose.connection;
