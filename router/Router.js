@@ -6,7 +6,6 @@ router.post('/signup',signUp);
 
 router.post('/signin',signIn);
 
-// router.post('/signin',signIn);
 
 // router.post('/add_category',addCategory);
 
