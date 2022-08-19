@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router(); 
 const {signUp,signIn}=require("../controller/user")
 
-router.post('/signup',(req,res)=>{
-    res.send("hii")
-});
+router.post('/signup',signUp);
 
 router.post('/signin',signIn);
 
