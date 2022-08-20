@@ -26,17 +26,17 @@ const userData = new mongoose.Schema({
 //     }},
 //     {timestamps:true})
 
-// const otp = new mongoose.Schema({
-//     number: {
-//         required: true,
-//         type: String
-//     },
-//     OTP:{
-//         required: true,
-//         type: String
-//     },
-//     createdAt:{type:Date,default:Date,index:{expires:300}}
-// },{timestamps:true})
+const otp = new mongoose.Schema({
+    number: {
+        required: true,
+        type: String
+    },
+    OTP:{
+        required: true,
+        type: String
+    },
+    createdAt:{type:Date,default:Date,index:{expires:300}}
+},{timestamps:true})
 
 // const category=new mongoose.Schema({
 //     name:String,
@@ -107,6 +107,6 @@ const userData = new mongoose.Schema({
 // const Kitchen = mongoose.model("Kitchen", kitchen);
 // const Category = mongoose.model("Category", category);
 const UserData = mongoose.model("UserData", userData);
-// const Otp = mongoose.model("Otp", otp);
+const Otp = mongoose.model("Otp", otp);
 
-module.exports = { UserData};
+module.exports = { UserData,Otp};

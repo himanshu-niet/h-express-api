@@ -1,4 +1,4 @@
-const {UserData}=require("../model/models")
+const {UserData,Otp}=require("../model/models")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 const secret_key=process.env.SECRET_KEY
@@ -64,3 +64,48 @@ exports.signIn= async(req,res)=>{
     }
    }
 
+
+   exports.otp= async(req,res)=>{
+    const phone=req.query.phone
+    const OTP=Math.floor(Math.random()*(9999 - 1000) + 1000)
+    try {
+        const existingUser=await Otp.findOne({number:phone})
+        if(existingUser){
+            return res.status(400).json({messege:"Phone Number Already Registered"})
+        }
+        
+        const result=await Otp.create({
+            number:phone,
+            OTP:OTP
+        })
+    
+        return res.status(200).json({user:result,messege:"OTP Send Successfuly"})
+
+    } catch (error) {
+        return res.status(500).json({messege:"Something Went Wrong"})
+
+    }
+   }
+
+   exports.otpVerify= async(req,res)=>{
+    const {phone,OTP}=req.body
+    try {
+    
+        const existingNumber=await Otp.findOne({number:phone})
+        if(!existingNumber){
+            return res.status(400).json({messege:"User Not Found"})
+        }
+        
+
+        if(existingNumber.OTP==OTP){
+            return res.status(200).json({messege:"Otp Verification Successful"})
+ }
+        
+        return res.status(400).json({messege:"Otp Verification Failed"})
+
+
+    } catch (error) {
+        return res.status(500).json({messege:"Something Went Wrong"})
+
+    }
+   }
