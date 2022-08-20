@@ -7,10 +7,13 @@ const userData = new mongoose.Schema({
     },
     phone:{
         required: true,
-        type: String,
+        type: String
     },
-    pass:String
-})
+    password:{
+        required: true,
+        type: String,
+    }
+},{timestamps:true})
 
 // const user=new mongoose.Schema({
 //     number:{
